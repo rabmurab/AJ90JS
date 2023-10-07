@@ -1,4 +1,6 @@
-### Variables and Declarations
+## Day 6
+
+### Variables and  Their Declarations
 
 Variables in programming is (like) a labelled container for storing some value. The name given to variables are used to reference them later in the code.
 
@@ -46,3 +48,52 @@ let name = "Muhammad";
 ```
 
 Variables are not only how we store data, but also how we manipulate them. We will talk about manipulating data in length next time.
+
+## Day 7
+
+### `var`, `let` and `const`
+
+As we have seen previously, there are three keywords for declaring a variable in javascript. These are:
+> `var`, `let`, and `const`
+
+##### The `var` Keyword
+
+This was the keyword traditionally used to declare variables. This is no longer the case since the introduction of the other two keywords.
+
+Variables declared with the `var` keyword can have unexpected behaviours. They will be accessible globally (throughout the entire program) which is not a good thing for reasons we will talk about in the future. For now, just know that we don't always want our variables to accessible everywhere in our program.
+
+One other thing with this keyword is the possibility to mistakenly redeclare a variable entirely, which can result in unexpected behaviours.
+```
+var year = 2020; // Initialization
+var year = 2023; // Redeclaration;
+```
+
+##### The `let` Keyword
+
+The `let` keyword was introduced in ECMAScript 6 or ES6 and is widely used for variable declaration. Variables declared with this are limited to the block of code, or in otherwords, have block scope. This meas the can only be accessed in certain parts of our code (we will explain further when we talk about functions).
+
+Hence, it is safer to use because we cannot redeclare the same variable after the first time. However, reassignment is possible.
+
+The following code will throw an error:
+```
+let myCar = "Audi"; // Declaration and Initialization
+let myCar = "BMW"; // Redeclaration not allowed
+```
+
+This is a valid code:
+```
+let myCar = "Audi"; // Declaration and Initialization
+myCar = "BMW"; // Reassignment is allowed
+```
+
+##### The `const` Keyword
+
+This is the last of the keywords used to declare a variable in javascipt. One unique thing about `const` is that it must be initialized immediately. So, `const user;` will throw an error, but `const user = "name;` is allowed. It is the only way in fact. Variables declared with `const`, like `let`, also have a block scope. 
+
+Furthermore, variables declared with `const` can not be changed, so only declare variables you know are not going to change throughout the block with it.
+
+The following code will throw an error:
+```
+const name = "Abdul"; // Declaration and Initialization
+name = "Abba"; // This is not allowed in js
+```
