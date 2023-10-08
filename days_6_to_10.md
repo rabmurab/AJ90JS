@@ -97,3 +97,45 @@ The following code will throw an error:
 const name = "Abdul"; // Declaration and Initialization
 name = "Abba"; // This is not allowed in js
 ```
+
+## Day 8
+
+### Data Types and their uses
+
+In prgramming, data types is an important concept. In order to operate on variables, it is important to know their type.
+
+Javascript is a dynamically-typed language, which means that they can hold values of any javascript type without specifying the type explicitly. Js has different several built-in data types. But for the purpose of this note, we are restricting ourselves to primitive data types. These are:
+- Number: used to store numeric values, both integers and floats
+- String: used for text and characters
+- Boolean: has only two values, true and false
+- Bigint: used for large numeric values that are very large
+- Undefined: represent an uninitialized variable
+- Null: variables set intentionally to shoe absence of any value
+
+Examples:
+```
+// Numbers:
+let age = 30;
+let height = 190;
+
+// Strings:
+let name = "Abdul";
+let month = "September";
+
+// Booleans
+let married = false;
+let engaged = true;
+
+// Bigint:
+let cells = 37200000000000; // cells in the human body
+let bits = 10000000000000; // bits in some hard disks
+
+// Undefined:
+let skills;
+let hope;
+
+// Null:
+let income = null;
+let worth = null;
+
+```
