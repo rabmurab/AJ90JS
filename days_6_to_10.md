@@ -137,5 +137,63 @@ let hope;
 // Null:
 let income = null;
 let worth = null;
-
 ```
+
+## Day 9
+
+#### Strings with Template Literals
+
+##### Strings
+
+A string is a series of zero or more characters enclosed within a single or double quotes. It is one of the primitive data in js and is sometimes referred to as "string literal".
+```
+let name = "Ajay" // `Ajay` is a string literal stored in a variable called `name`
+```
+
+When defining a string, it must start and end with a single or double qoute. This becomes problematic when you need a literal quote within your string. When you include a quote within a string, you are at the risk of ending your string prematurely.
+```
+let str = 'Ajay's challenge';
+let anotherStr = "We use "" when quoting someone"; 
+```
+Both examples above will throw error.
+In the first example, the string terminates at `Ajay` and javascript will ignore the rest and throw an error because it doesn't understand what `s challenge` is.
+Also, in the second string, the string ends at `We use `. ` when quoting someone` will throw an error.
+
+So how do we do this properly?
+Well, there's a couple of ways to include an apostrophe and a quote within a string.
+
+One way is to alternate between single and double quote, since a string must end with the type of quote it began with. This means declaring a string with double quotes if you intend to use an apostrophe in the string and declaring it with single quotes if you intend to use quotes in it.
+
+To correct the code above:
+```
+let str = "Ajay's challenge";
+let anotherStr = 'We use "" when quoting someone';
+```
+
+Another way to go about this is by palcing a backslash `\` in front of the inner quote.
+```
+let str = 'Ajay\'s challenge';
+let anotherStr = We use \"\" when quoting someone";
+``` 
+
+The backslash isn't just used for escaping quotes. It is used for escaping special characters in a string. Escape sequences aloow us to use characters we may otherwise not use in a string. These characters include:
+|Code|  Output       |
+|----|---------------|
+|\\  |  backlash     |
+|\n  |  newline      |
+|\t  |  tab          |
+|\r  |carriage return|
+|\b  |  backspace    |
+|\f  |  form feed    |
+
+Multiple strings can be joined together in an operation called "concatenation". Concatenation means joining different strings together using the `+` operation. We have not learned about operators so we will revivit this at a later time.
+
+The length of a string can be figured out by javascript using the `.length` function. This returns the number of characters present in a string.
+```
+let name = "Fatima";
+name.length // 6;
+```
+
+##### Template Literals
+
+Template literals are a special type of string that makes creating complex strings easier. They allow you to create multiple strings and use string interpolation features to create strings.
