@@ -159,6 +159,8 @@ Both examples above will throw error.
 In the first example, the string terminates at `Ajay` and javascript will ignore the rest and throw an error because it doesn't understand what `s challenge` is.
 Also, in the second string, the string ends at `We use `. ` when quoting someone` will throw an error.
 
+###### Escaping Sequence in Strings
+
 So how do we do this properly?
 Well, there's a couple of ways to include an apostrophe and a quote within a string.
 
@@ -176,7 +178,7 @@ let str = 'Ajay\'s challenge';
 let anotherStr = We use \"\" when quoting someone";
 ``` 
 
-The backslash isn't just used for escaping quotes. It is used for escaping special characters in a string. Escape sequences aloow us to use characters we may otherwise not use in a string. These characters include:
+The backslash isn't just used for escaping quotes. It is used for escaping special characters in a string. Escape sequences allow us to use characters we may otherwise not use in a string. These characters include:
 |Code|  Output       |
 |----|---------------|
 |\\  |  backlash     |
@@ -186,14 +188,181 @@ The backslash isn't just used for escaping quotes. It is used for escaping speci
 |\b  |  backspace    |
 |\f  |  form feed    |
 
+Example: backslash
+```
+let wrongStr = "Escape sequence by using \ in JS" // The backslash won't appear in the console
+let correctStr = "Escape sequence by using \\ in JS" // One backlash will appear as the first one escapes the second
+```
+
+Exanple: newline
+```
+let wrongStr = "My name is Abba 
+                I am a frontend developer" // The console won't recognise the new line and the string would be printed on the same line
+let correctStr = "My name is Abba\nI am a frontend developer" // The `\n` would enter a newline in the console.
+```
+
 Multiple strings can be joined together in an operation called "concatenation". Concatenation means joining different strings together using the `+` operation. We have not learned about operators so we will revivit this at a later time.
 
+###### Length of a String
 The length of a string can be figured out by javascript using the `.length` function. This returns the number of characters present in a string.
 ```
 let name = "Fatima";
 name.length // 6;
 ```
 
+## Day 10
 ##### Template Literals
 
-Template literals are a special type of string that makes creating complex strings easier. They allow you to create multiple strings and use string interpolation features to create strings.
+Template literals are a special type of string that makes creating complex strings easier. They allow you to create multi-line strings and use string interpolation features with embedded expressions to create strings.
+
+Template literals are delimited with backticks. The are sometimes called template strings because of their use in string interpolation (to create strings by doing substitution of placeholders).
+
+#### Operators and Operator Precedence
+
+In javascript, operators are used to perform almost every task.
+There are many operators including:
+- Arithmetic Operators
+- Assignment Operators
+- Comparison Operators
+- String Operators
+- Logical Operators
+- Bitwise Operators
+- Ternary Operators
+and so on.
+
+For the purpose of this section, we will be looking into only the first five on the list.
+
+###### Arithmetic Operators
+
+These are the normal operators we are taught in primary school maths. They are used only with number data type.
+
+|Operator|Description|
+|--------|-----------|
+|+       |Addition   |
+|-       |Subtraction|
+|*       |Multiplication|
+|/       |Division   |
+|%       |Modulus    |
+|**      |Exponentiation|
+|++      |Increment  |
+|--      |Decrement  |
+
+Examples:
+```
+let x = 10;
+let y = 5;
+
+x + y = 15;
+x - y = 10;
+x * y = 50;
+x / y = 2;
+x % y = 0;
+x ** y = 100000;
+x++ = 11;
+y-- = 4;
+```
+The last two examples simply imply `x = x + 1` and `y = y + 1` respectively.
+
+#####  Assignment Operators
+
+We have been using assignment operators throughout this note. Denoted by `=`, they are used to assign value to a variable. Everything to the right of the assignment operator will be stored in the variable on the left (after solving all the operators on the right).
+
+Example:
+```
+let x = 10;
+let y = 5;
+let z = x + y;
+```
+In this example, `x` gets `10`, `y` gets `5`, and `z` gets the value after resolving the `+` operator, in this case, 15.
+
+One other useful thing to know about the assignment operator is that it can be used in combination with most of the arithmetic operators. This is done in a case where we want to perform an operation on a variable using the variable itself.
+
+For example:
+```
+let x = 10;
+x = x + 5;
+```
+The above expression can be written as:
+> x += 5;
+
+This shorthand of using the assignment operator can be used with all the arithmetic operators mentioned earlier in [this section](#arithmetic-operators).
+
+```
+let x = 10;
+let y = 5
+x -= y; // 5
+x *= y; // y0
+x /= y; // 2
+x %= y; // 0
+x **= y; // 100000;
+```
+
+##### Comparison Operators
+
+COmparison operators, as the name imply, are used to compare between two values, each on either side of the operators, after resolving any arithmetic operations (if present) on both sides.
+
+Comparison Operators are as follows:
+|Operator|Description|
+|--------|-----------|
+|==      |equal to   |
+|===     |strictly equal to|
+|!=      |not eqaul to|
+|!==     |strictly not equal to|
+|>       |greater than|
+|<       |less than  |
+|>=      |greater than or equal to|
+|<=      |less than or equal to|
+
+After analysing the comparison operator, js returns a boolean for whether the comparison is true or false.
+
+Javascript will normally convert a type to another where possible, just to be able to perform an operation. This means that when we compare a string `"5"` and a number `5`, js converts the number to a string to be able to perform an operation between the two and will return true when compared.
+
+The `===` and `!==` operators will not allow "type coersion", so it will strictly check the value itself and also the type of the value. In this case, `"5" === 5` will return false.
+
+##### String Operators
+
+There are two main operations between strings. They are "concatenation" and comparison. Both of these operations use symbols we've discussed already.
+
+Concatenation means to join two or more strings together.It can also mean to join string and other types, although the other type will be coerced to become a string and then concatenation takes place.
+```
+let firstName = "David";
+let lastName = "Malan"
+let greeting = "Hello"
+
+let resultStr = greeting + ' ' + firstName + ' ' + lastName + '.'
+// Hello David Malan.
+```
+Notice that the `+` operator is called cocatenation operator when used on strings and can also be used in combination with the assignment operator. When we concatenate strings this way, we have to manually add the spaces between the variable.
+
+To compare strings, we can use any of the comparison operators above. It is worth noting however, that js will compare the ASCII values of characters when compared.
+
+##### Logical Operators
+
+There are three logical operators in javascript. The "logical and", "logical or", and "logical not" operators, denoted by `&&`, `||`, and `!` respectively.
+
+The purpose of the "logical and" operator is to check whether two (or more) comparisons are true or false, depending on the situation. For example, we can check if the string `"Bellow"` has a vowel and if it has more than 5 characters. Javascript will check and only return true (which it does in this case) if both conditions are met.
+
+The "logical and" operator on the other hand does the same, but will return true if one or both of the conditions are met.
+
+Lastly, the "logical not" operator checks to see if the inverse of the condition is met and returns true.
+
+We can check for multiple conditions on the sameline of code by chaining the logical operators. We will discuss more about this in the "Control Flow" section tomorrow.
+
+##### Operation Precedence
+
+Javascript, like any other programming language, uses the standard method of operator precedence.
+
+Parentheses are used to group things so that nothing interacts with them until they are resolved. Order follows next. Division and multiplication have the same precedence from left to right. Then addition and subtraction come last.
+
+This is known as BODMAS, PEMDAS, PEDMAS and many other acronyms depending on where you live and studied.
+
+I'll add that arithmetic operations are resolved before comparison, those are resolved before logical operation and all that are reolved before assignment of value to a variable.
+
+#### Variable Assignment and Modification
+
+Variable assignment is how we store data in a variable. We have been assigning data to variable.
+
+We can modify the data in a variable by either changing it completely or just updating it.
+
+As discussed earlier, variables are like labelled containers for storing data. That data can be overwritten or just have something added to it (or subtracted).
+
