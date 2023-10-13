@@ -366,3 +366,11 @@ We can modify the data in a variable by either changing it completely or just up
 
 As discussed earlier, variables are like labelled containers for storing data. That data can be overwritten or just have something added to it (or subtracted).
 
+Both assignment and modification are done using the assignment operator `=`, sometimes in combination with other operators.
+
+```
+let x = 10; // Assignment
+x = 14; // Reassignment or overwriting
+x = x + 2 // Updating x to be 16
+```
+In the above code, the first line declares and initializes x to 10. The second line changes/modifies x to 14. This is like removing 10 from the container and dropping 14. The third line doesn't remove the value 14 from the container, instead it adds 2 to the value already there, making the total data in x to be 16.
