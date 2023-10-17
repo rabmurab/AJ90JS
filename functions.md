@@ -81,4 +81,31 @@ const add = (a, b) => a + b;
 
 You will notice that in the above function, we didn't return the sum of `a` and `b`and we simply added he two parameters. This is because of the `arrow function` syntax. This syntax returns expression by default, provided they are one-liners.
 
+We can also get rid of the parentheses is our `arrow function` has only one argument.
+```
+const square = a => a * a;
+```
+
+`arrow functions` come with their own limitations which will not be discussed in this section.
+
 #### Callbacks and Higher Order Functions
+
+In JavaScript, functions are treated as first-class objects, meaning you can do just about anything with them as you can do other elements like `numbers` and `strings`. We have already seen [earlier](#function-expression) that they can be assigned to a variable
+
+In addition to this, functions can be returned from other functions, or even passed as arguments into another function, which is then invoked inside the outer function to complete some kind of action.
+
+A function passed into another function as argument is called a `callback` function.
+
+Conversely, a function that accepts another function as arguments is called a `higher-order` function.
+
+```
+// Example of a callback function
+function callBack() {
+    code somthing;
+};
+
+// Example of a higher-order function
+function higherOrder(callBack) {
+    code something;
+};
+```
