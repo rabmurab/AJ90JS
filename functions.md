@@ -109,3 +109,22 @@ function higherOrder(callBack) {
     code something;
 };
 ```
+
+## Day 18
+
+I solved some challenges on Codewars:
+```
+function zeros (n) {
+  // your code here
+  let count = 0;
+
+    // Keep dividing n by 5 and counting the quotient until it's less than 5
+    while (n >= 5) {
+        n = Math.floor(n / 5);
+        count += n;
+    }
+
+    return count;
+}
+```
+This function calculates the number of trailing zeros in a factorial of a given number.
