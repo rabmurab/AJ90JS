@@ -128,3 +128,30 @@ function zeros (n) {
 }
 ```
 This function calculates the number of trailing zeros in a factorial of a given number.
+
+## Day 19
+
+Again, solved some problems on Codewars:
+```
+function moveZeros(arr) {
+  let zeroArr = [];
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      zeroArr.push(...arr.splice(i, 1));
+    }
+  }
+
+  result = arr.concat(zeroArr);
+  return result;
+}
+```
+I started solving with the above code and once I got it working, I refactored into:
+```
+function moveZeros(arr) {
+  const nonZeroArr = arr.filter((item) => item !== 0);
+  const zeroArr = arr.filter((item) => item === 0);
+  return nonZeroArr.concat(zeroArr);
+}
+```
