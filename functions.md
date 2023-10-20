@@ -155,3 +155,18 @@ function moveZeros(arr) {
   return nonZeroArr.concat(zeroArr);
 }
 ```
+
+## Day 20
+
+A simple function that calculates items in an a object.
+```
+function calculateCost(items) {
+  let total = 0;
+
+  for (const item of items) {
+    total += item.price * item.quantity;
+  }
+
+  return total;
+}
+```
