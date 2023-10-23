@@ -53,6 +53,8 @@ console.log(evenArr); // [2, 4, 6, 8, 10]
 
 From the example above, we can see that array sizes (in JS) are not fixed. Elements can be dynamically added or removed as needed.
 
+## Day 22
+
 #### Array Methods I
 
 In the example above, we added a number, 10, to the end of `evenArr` by assigning the value to the first index of the array that doen't exist (4 in this case). It was possible because we know the last index of `evenArr`. What if we have a really large array and we simply do not know the index?
@@ -113,3 +115,52 @@ Consider the table below:
 |-------------------|-------------------|---------------|
 |Insert             |`unshift()`        |`push()`       |
 |Remove             |`shift()`          |`pop()`        |
+
+
+## Day 23
+
+We've seen how to remove elements from the beginning and end of an array. What if we want to remove an element from the middle? Or we want to remove more than one element at a time?
+
+We'll take a look at two more methods.
+
+##### `slice()` Method
+
+The `slice()` method takes copies, or more correctly, extracts a given number of elements from an array. It takes 2 argument which are both indeices of the array. The first argument is the index at which the extraction begins, and the second argument is where it stops.
+
+However, if we don't provide the second argument, JS assumes it to be the array's length.
+```
+const arr = ["Benin", "Cameroon", "Ghana", "Niger", "Nigeria"]
+const slicedArr = arr.slice(2, 4);
+const last = arr.slice(3)
+
+console.log(arr);   // ["Benin", "Cameroon", "Ghana", "Niger", "Nigeria"]
+console.log(slicedArr); // ["Ghana", "Niger"]
+console.log(last);  // ["Niger", "Nigeria"]
+```
+
+A few things to note here. The `slice()` method:
+- does not mutate the original array.
+- include the index of the first argument, but not the second.
+- can be called with one or two arguments.
+
+##### `splice` Method
+
+`splice()` allows us to remove any number of cosecutive elements from anywhere in array. It can take up to 3 parameters, but it can also take 2 or even 1.
+
+The first 2 parameters are integers which represent indexes of items in an array, the beginning and the number of elements to be removed respectively.
+
+If the method is called with one argument only 1 argument, it removes from the index of the argument to the end of the array.
+
+If called with 2 arguments, it starts from the index of the first argument, and removes the second number of elements from the array.
+
+If called with more than 2 arguments, it does exactly what the above does, then adds the rest of the arguments to the array.
+
+This will all make sense if we consider the code below:
+```
+const friends = ["Fatima", "Nafisa", "Aliyu", "Mustapha"];
+friends.splice(1); // ["Fatima"]
+friends.splice(1, 2); // ["Fatima", "Mustapha"]
+friends.splice(1, 2, "Imran", "Asma'u"); // ["Fatima", "Imran", "Asma'u", "Mustapha"]
+```
+
+Note that `splice()` mutates an array, so the examples above are different instances of the method call.
