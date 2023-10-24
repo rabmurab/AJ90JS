@@ -164,3 +164,50 @@ friends.splice(1, 2, "Imran", "Asma'u"); // ["Fatima", "Imran", "Asma'u", "Musta
 ```
 
 Note that `splice()` mutates an array, so the examples above are different instances of the method call.
+
+
+## Day 24
+
+##### `map()` Method
+
+The `map()` method iterates over each item in an array and returns a new array containing the results of calling the callback function on each element without mutating the original array.
+
+When the callback is used, it is passed three arguments. The first argument is the current element being processed, the second is the index of that element, and the third is the array upon which the `map()` method was called.
+```
+const students = [
+    {name: 'Abigail', age: 16},
+    {name: 'Samson', age: 19},
+    {name: 'Tobias', age: 17},
+];
+
+const names = students.map(student => student.name);
+console.log(names); // ['Abigail', 'Samson', 'Tobias']
+```
+
+##### `filter` Method
+
+This method calls a function on each element of an array and returns a new array containing only the elements for which that function returns a truthy value (a value which returns `true` if passed to the `Boolean()` constructor).
+
+The callback accepts three arguments. The first argument is the current element being processed, the second is the index of that element and the third is the array upon which the `filter()` method was called.
+```
+const studentsUnder18 = students.filter(student => student.age < 18);
+console.log(studentsUnder18);   // [{name: 'Abigail', age: 16}, {name: 'Tobias', age: 17},]
+```
+
+##### `reduce` Method
+
+This is themost general of all array operations in JavaScript. It can be used to solve almost any array processing problem using this method.
+
+The `reduce()` method allows for more general forms of array processing, and it's possible to show that both `map()` and `filter()` methods can be derived as special applications of `reduce()`.
+
+This method iterates over each item in an array and returns a single value. This is achieved via a callback function thatg is called on each iteration.
+
+The callback function accepts four arguments. the first argument is known as the accumulator, which gets assignred the return value of the callback function from the previous iteration, the second is the current element being processed, the third is the index of that element, and the fourth is thne array upon which `reduce()` is called.
+
+In addition to the callback function, `reduce()` has an additional parameter which takes an initial value for the accumulator. If this second parameter is not used, then the first iteration is skipped and the second iteration gets passed the first element of the array as the accumulator.
+```
+const sumOfAges = students.reduce((sum, student) => sum + student.age, 0);
+console.log(sumOfAges); // 64
+```
+
+There are many more array method to discuss and we will be mentioning the briefly in due course.
