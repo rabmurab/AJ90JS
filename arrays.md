@@ -168,6 +168,8 @@ Note that `splice()` mutates an array, so the examples above are different insta
 
 ## Day 24
 
+#### Array Methods II
+
 ##### `map()` Method
 
 The `map()` method iterates over each item in an array and returns a new array containing the results of calling the callback function on each element without mutating the original array.
@@ -210,4 +212,56 @@ const sumOfAges = students.reduce((sum, student) => sum + student.age, 0);
 console.log(sumOfAges); // 64
 ```
 
-There are many more array method to discuss and we will be mentioning the briefly in due course.
+## Day 25
+
+Other array methods that are very common are:
+
+1. `concat()` method: Combines two or more arrays and returns a new array without mutating the original arrays.
+2. `join()` method: Converts the elements of an array into a string, separated with a specified separator.
+3. `indexOf()` method: Returns the first index at which a specified element is found in an array. It returns -1 if not found.
+4. `forEach` method: Executes a provided function once for each element of an array.
+5. `every()` method: Checks if all elemets of an array meets a certain condition.
+6. `some()` method: Checks if at least one element in an array meets a certain condition.
+7. `includes()` method: Determines whether an array contains a specified element, returning a `boolean` as appropriate.
+8. `sort()` method: Takes an array and sorts its elements according to a certain criteria.
+9. `find()` method: Returns the first element in an array that satisfies a certain condition.
+
+#### Iterating Over an Array
+
+All the methods mentioned above, probably with the exception of `concat()`, iterate over arrays and perform specific, almost predefined tasks.
+
+To itearate over an array, literally, we can use any of the [`loops`](/control_flow.md#loops) we covered in previous sections.
+
+However, there are variations of `for` loops specifically for iterating over an array (and other iterable objects). These are:
+- `for...of` loop
+- `for...in` loop
+
+A `for...of` loop iterates over each element in an array without the need to know the length of the array and without keeping track of the number of iterations, hence, there's no value to be incremented.
+```
+const animals = ["antelope", "baboon", "cheetah"];
+
+for (let animal of animals) {
+    console.log(animal);
+}
+
+/*
+    antelope
+    baboon
+    cheetah
+*/
+```
+We can declare the variable `animal` with any of the keywords accepted in JavaScript.
+
+A `for...in` loop on the other hand, iterates over each index of an array, also without keeping track of the number of times of iteration. It simply returns every index of the array.
+```
+for (let index of animals) {
+    console.log(index);
+}
+
+/*
+    0
+    1
+    2
+*/
+```
+It is worth noting here that a `for...in` loop is more useful in an `object`.
