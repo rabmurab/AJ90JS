@@ -18,3 +18,16 @@ Similar to an array, we can access the data in an object with the square bracket
 console.log(person["firstName"]);   // John
 console.log(person.lastName);   // Doe
 ```
+
+## Day 27
+
+#### Object Methods
+
+##### Object.hasOwnProperty()
+
+The `Object.hasOwnProperty()` method is used to check if an object has a property with the specified name (including its own properties as well as those inherited from its prototype). It returns a boolean value, indicating whether the object has the specified property.
+
+Here's its syntax:
+> obj.hasOwnProperty(prop)
+
+If the property `prop` is in the object in question, i.e., the object has the property, the method returns `true`, else, it returns false.
