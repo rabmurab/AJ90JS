@@ -1,0 +1,11 @@
+## Day 28
+
+### Object Oriented Programming
+
+OOP is one of the major approaches to the sofware development process. Objects and classes organize code to describe things and what they can do.
+
+In JavaScript, objects are instances of classes or prototypes. An object is a composite data type that groups together variables (properties) and functions (methods) that are related. Objects are often used to represent real-world entities, concepts, or abstractions.
+
+JavaScript is a versatile language that supports both classica; OOP patterns (using classes) and prototypal OOP (using prototypes). Developers can choose the approach that best fits the requirements of their applications.
+
+OOP principles are crucial for designing maintainable and scalable software in JavaScript.
