@@ -43,3 +43,80 @@ const person2 = new Person("Abubakar", "Yusuf")
 ```
 
 From what we've seen so far, `classes` are like templates for creating objects.
+
+
+## Day 30
+
+#### Constructors and Prototypes
+
+Constructors are functions used to create an object. It can also be used within a class to create the template for making other similar objects.
+
+Prototypes are objects that contain properties and methods that are inherited by objects created from a constructor.
+
+Let's take a deep dive into each.
+
+##### Constructors
+
+A constructor is a special function that is used to create and initialize objects. Constructors are typically used to create multiple objects with similar properties and methods.
+
+Here's how to define and use a constructor:
+```
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+```
+
+To create an object from a constructor function, we use the `new` keyword:
+```
+const bob = new Person('Bob', 30)
+const charlie = new Person('Charlie', 25)
+```
+
+The `constructor` function can include properties and methods that will be shared by all objects created using it. However, we typically add methods to prototype to avoid redundancy.
+
+##### Prototypes
+
+The prototype is an object that every constructor function has by default. It is used to store methods and properties that are shared by all objects created from the same constructor.
+
+Here's how to work with prototypes:
+```
+// Add a method to prototype
+Person.prototype.greet = function () {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`)
+};
+
+// Use a method from prototype
+bob.greet(); // Hello my name is Bob and I am 30 years old
+charlie.greet(); // Hello my name is Charlie and I am 25 years old
+```
+
+In JS, if a method or property is not found on an object, the runtime will look for it in the object's prototype. If no found there, the search continues up the prototype chain until it reaches the root, `Object.prototype`.
+
+Prototype plays a sinificant role in implementing inheritance in JS. By creating a prototype chain, you can have objects inherit methods and properties from other objects, mimicking traditional class-based inheritance.
+
+```
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.makeSound = function () {
+  console.log(`The ${this.name} makes a sound.`);
+};
+
+function Dog(name) {
+  Animal.call(this, name);
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.bark = function () {
+  console.log('Woof! Woof!');
+};
+
+const myDog = new Dog('Buddy');
+myDog.makeSound(); // Outputs: The Buddy makes a sound.
+myDog.bark();      // Outputs: Woof! Woof!
+
+```
