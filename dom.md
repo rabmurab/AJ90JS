@@ -44,6 +44,7 @@ We can find `HTML` elements mainly using one of three methods:
 - `document.getElementsByTagName(name)` finds elements by tag name
 - `documnent.getElementsByClassName(name)` finds elements by class name
 
+## Day 32
 #### Changing HTML Elements
 
 |Property|Description|
