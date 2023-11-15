@@ -4,7 +4,7 @@
 
 In simple terms, synchronous programming (sync) is a sequence of programming blocks executed from top to bottom in order while acsynchronous programming (async) is a sequence of code blocks executed independently in no particular order.
 
-[a_sync image](https://www.mendix.com/wp-content/uploads/Blog-ThumbnailSync-vs-Async.png)
+![a_sync image](https://www.mendix.com/wp-content/uploads/Blog-ThumbnailSync-vs-Async.png)
 
 Asynchronous and synchrousnous are two programming models, each with its own advantage. Let's dive into each one of them.
 
@@ -35,9 +35,3 @@ multiple operations can run
 at the same time|Slower and more methodical
 
 Understanding these two concepts of programming is very critical for building APIs, creating event-based architectures and deciding how to handle long-running tasks.
-
-Consider the following code:
-
-```js
-    const name = "
-```
