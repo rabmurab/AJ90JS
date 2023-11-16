@@ -1,6 +1,6 @@
 ## Day 46
 
-### Asynchronous vs. Synchronous Programmind
+### Asynchronous vs. Synchronous Programming
 
 In simple terms, synchronous programming (sync) is a sequence of programming blocks executed from top to bottom in order while acsynchronous programming (async) is a sequence of code blocks executed independently in no particular order.
 
@@ -22,16 +22,75 @@ An example of synchronous programming is making an online payment, where you wou
 
 In javascript, the default behaviour is that of a synchronous programming. However, it offers the ability to harness the flexibility of asynchronous programming.
 
-|Async|Sync|
-|-----|----|
-|Multi-thread,
-programs can run in parallel|Single thread,
-only one program will run at a time|
-|Non-blocking,
-can send multiple requests to server|Blocking,
-can only sedn one request at a time|
-|Increase throughput because
-multiple operations can run
-at the same time|Slower and more methodical
-
 Understanding these two concepts of programming is very critical for building APIs, creating event-based architectures and deciding how to handle long-running tasks.
+
+
+## Day 47
+
+### Event Handlers
+
+Event handlers are a form of asynchronous programming in the sense that you provide a function that will be called not right away, but whenever an event happens.
+
+### Callbacks
+
+An event handler is a particular type of callback. A callback is just a function that's passed into another function, with the expectation that the second function will be called at an appropriate time. Callbacks usd to be the main way asynchronous functions were implemented in JS.
+
+Callback-based code can get hard to understand when the callback itself has to call functions that acept a callback. This is a common situation if you need to perform some operation that breaks down a series of asynchronous functions.
+
+Consider the below:
+```js
+function doStep1(init) {
+  return init + 1;
+}
+
+function doStep2(init) {
+  return init + 2;
+}
+
+function doStep3(init) {
+  return init + 3;
+}
+
+function doOperation() {
+  let result = 0;
+  result = doStep1(result);
+  result = doStep2(result);
+  result = doStep3(result);
+  console.log(`result: ${result}`);
+}
+
+doOperation();
+```
+
+We could implement the code above using callbacks like this:
+
+```js
+function doStep1(init, callback) {
+  const result = init + 1;
+  callback(result);
+}
+
+function doStep2(init, callback) {
+  const result = init + 2;
+  callback(result);
+}
+
+function doStep3(init, callback) {
+  const result = init + 3;
+  callback(result);
+}
+
+function doOperation() {
+  doStep1(0, (result1) => {
+    doStep2(result1, (result2) => {
+      doStep3(result2, (result3) => {
+        console.log(`result: ${result3}`);
+      });
+    });
+  });
+}
+
+doOperation();
+```
+
+Because we have to call callbacks inside callbacks, we get a deeplynested `js doOperation()` function, which is much harder to read and debug. This is sometimes referred to as callback hell.
