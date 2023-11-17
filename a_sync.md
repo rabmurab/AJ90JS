@@ -93,4 +93,27 @@ function doOperation() {
 doOperation();
 ```
 
-Because we have to call callbacks inside callbacks, we get a deeplynested `js doOperation()` function, which is much harder to read and debug. This is sometimes referred to as callback hell.
+Because we have to call callbacks inside callbacks, we get a deeplynested `doOperation()` function, which is much harder to read and debug. This is sometimes referred to as callback hell.
+
+## Day 48
+
+To avoid callback hell, most modern asynchronous API don't use callbacks. Instead, the foundation of asynchronous programming in JavaScript is the `promise`.
+
+### `Promises`
+
+Promises are the foundation of asynchronous programming in modern JS. A promise is an object returned by an asynchronous function, which represents the current state of the operation. At the time the promise is returned to the caller, the operation often isn't finished, but the promise object provides methods to handle the eventual success or failure of the operation.
+
+With a promise-based API, the asynchronous function starts the operation and returns a `promise` object. We can then attach handlers to this promise object, and these handlers will be executed when the operation has succeeded or failed.
+
+A `promise` is in one of these states:
+
+- pending: initial state, neither fulfilled nor rejected
+- fulfilled: operation completed successfully
+- rejected: operation failed
+
+The eventual state of a pending promise can either be `fulfilled` with a value or `rejected` with a reason (error). When either of these options occur, the associated handlers queued up by a promise's `then` method are called. If the promise has already been fulfiled or rejected when a corresponding handler is attached, the handler will be called, so there is no race condition between an asynchronous operation completing and its handlers being attached.
+
+A fulfilled or rejected promise is said to be `settled`, not `pending`
+
+![promise mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png)
+
