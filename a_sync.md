@@ -134,5 +134,26 @@ Inside an async function, we can use the `await` keyword before a call to a func
 
 This enables us to write code that uses asynchronous functions but looks like synchronous code.
 
-In conclusion, the `async` and `await` keywords make it easier to build an operation from a series of consecutive asynchronous function calls, avoiding the need to create expliit promise chains, and allowing us to write code that looks just like synchronous code.
+The `async` and `await` keywords make it easier to build an operation from a series of consecutive asynchronous function calls, avoiding the need to create expliit promise chains, and allowing us to write code that looks just like synchronous code.
 
+Example of an `async` function
+
+```js
+function resolveAfter2Seconds() {
+  return new Promise((resolve) => {
+    serTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  const result = await resolveAfter2seconds();
+  console.log(result);
+}
+
+asyncCall();
+```
+
+Note however, that there can't be a line terminator between `async` and `function`, otherwise a semicolon is automatically inserted, causing `async` to become an identifier and the rest to becom a `function` declaration.
