@@ -117,3 +117,22 @@ A fulfilled or rejected promise is said to be `settled`, not `pending`
 
 ![promise mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png)
 
+
+## Day 49
+
+### `async` and `await`
+
+The `async` keyword gives us a simpler way to work with asynchronous promise-based code. Adding `async` at the start of a function makes it async function.
+
+```js
+async function myFunction() {
+  // This function is an async function
+}
+```
+
+Inside an async function, we can use the `await` keyword before a call to a function that returns a promise. This makes the code wait at that point until the promise is settled, at which point the fulfilled value of the promise treated as a return value, or the rejected value is thrown.
+
+This enables us to write code that uses asynchronous functions but looks like synchronous code.
+
+In conclusion, the `async` and `await` keywords make it easier to build an operation from a series of consecutive asynchronous function calls, avoiding the need to create expliit promise chains, and allowing us to write code that looks just like synchronous code.
+
