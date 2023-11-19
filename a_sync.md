@@ -157,3 +157,35 @@ asyncCall();
 ```
 
 Note however, that there can't be a line terminator between `async` and `function`, otherwise a semicolon is automatically inserted, causing `async` to become an identifier and the rest to becom a `function` declaration.
+
+## Day 50
+
+### Handling Error
+
+APIs can throw errors for many different reasons and we are throwing an error ourselves if the server returned an error.
+
+Handling errors can get very difficult with nested callbacks, making us handle errors at every nesting level.
+
+To support error handling, `promise` objects provide a `catch()` method that takes a handler function, which is called when the asynchronous operation fails.
+
+If we add `catch()` to the ends of a promise chain, then it will be called when any of the asynchronous function calls fail. So we can implement an operation as several consecutive asynchronos function calls, and have a single place to handle errors.
+
+```js
+const fetchPromise = fetch(
+  "bad-scheme://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
+
+fetchPromise
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data[0].name);
+  })
+  .catch((error) => {
+    console.error(`Could not get products: ${error}`);
+  });
+```
