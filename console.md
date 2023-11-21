@@ -182,3 +182,28 @@ The output in the console looks like:
 ```
 Note: Certain online IDEs and editors may implement the console API differently than the browsers. As a result, certain functionality of the console API, such as the timer methods, may not be outputted in the console of online IDEs or editors. Always open your browser's DevTools console to see the logs as shown in this documentation.
 ```
+
+## Day 52
+
+### Debugging and Breakpoint
+
+We can't talk about breakpoints without first talking about "debugging".
+
+Debugging is the process of finding and fixing errors (aka bugs) within our code. All modern browsers and most environments support debugging tools, which is a special interface in developer tools that makes debugging much easier. It also allow us trace our code step by step to see what is going on and at what point.
+
+Breakpoints are points in our code where the debugger will pause the execution of our code, allowing us to inpect the state of our application, track variable values, and step through our code line by line. They can be set using the debugging tools provided by browsers.
+
+We can also pause the code by using the `debugger` command in it.
+The `debugger` statement invokes any available debugging functionality, such as setting a breakpoint. If no such debugging functionality is available, the debugger statement has no effect.
+
+Syntax:
+```js
+function potentiallyBuggyCode() {
+    debugger;
+    // some buggy stuff
+}
+```
+
+When the debugger is invoked, execution is paused at the `debugger` statement, just like a breakpoint.
+
+To use the `debugger` statement, insert the `debugger` statement in your code and open the developer tools to see paused execution.
