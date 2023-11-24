@@ -47,6 +47,8 @@ These enables us to interact with device hardware: for example, accessing the de
 - Client-side storage APIs
 These enables us to store data on the client-side, so you can create an app that will save its state between page loads, and perhaps even work when the device is offline.
 
+## Day 54
+
 #### Third-Party APIs
 
 Many large websites and services provide APIs that are not built into the browser, allowing developers to make use of their data or services.
@@ -144,3 +146,24 @@ L.marker([53.480759, -2.242631], {
 ```
 
 The last method in this example, `.addTo()` method, is what actually add the marker to the map.
+
+## Day 55
+
+### Making an API Request and Fetching the Data
+
+We can fetch data from a server and update section(s) of our page without having to reload the page altogether. This significantly improves the performance of our site.
+
+We will explore at how we can achive this and look closely at the `Fetch` API.
+
+The Fetch API provides an interface for fetching resources. `fetch()` takes a URL as a parameter. It is an asynchronous API which returns a promise. We then pass a function into the `then()` method of the returned promise. This method will be called when the HTTP rquest has received a response from the server.
+
+In addition to the `fetch()` method, the Fetch API has the following interfaces:
+
+- `Request`
+Represent a resource request.
+
+- `Response`
+Represents the response to a request.
+
+- `Headers`
+Represents response/request headers, allowing us to querry them and take different actions depending on the results.
